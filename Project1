@@ -1,6 +1,7 @@
 //BORRES, Raymond Tenorio 082140795
 //Project 1 - Computer Software 1
 
+#define M_PI 3.14159265358979323846264338327950288   //Define the value of pi to compare with the approximated value.
 #include <stdio.h>    //import stdio.h library for printf, scanf
 #include <math.h>     //import math.h library for sqrt function
 
@@ -12,10 +13,9 @@ int main(void)
     double nilakantha_pi= 3;  //Initialize the value of pi as 3 for Nilakantha's Infinite Series.
     double viete_pi= 1;       //Initialize the value of pi as 1 for Viete's Formula.
     double wallis_pi= 1;      //Initialize the value of pi as 1 for Wallis Product. 
-    double factor_euler, sub_euler, factor_viete;   //Initialize factors used in loops for the approximations.
-    double pi= 3.1415926535897932;                  //Initialize the value of pi in 16 variables to compare with the approximated value.
+    double factor_euler, sub_euler, factor_viete;     //Initialize factors used in loops for the approximations.
     double percentacc_elr, percentacc_gls, percentacc_nlk, percentacc_vte, percentacc_wls;      //Initialize the variable for the error rate. 
-    double pidiff_elr, pidiff_gls, pidiff_nlk, pidiff_vte, pidiff_wls;                          //Initialize the difference between pi and the approximated value for error rate calculation.
+    double pidiff_elr, pidiff_gls, pidiff_nlk, pidiff_vte, pidiff_wls;                          //Initialize the difference between M_PI and the approximated value for error rate calculation.
     int count_euler, count_gregleib, count_nilakantha, count_viete, count_viete2, count_wallis; //Initialize the counters utilize for the loops in the approximations.
     int iteration;            //Initialize the number of iterations.
  
@@ -36,12 +36,12 @@ int main(void)
        }
     }
     printf("\nApproximated value of pi using Euler's Solution = %1.16lf",euler_pi);  //Print the value of the approximated calculation of pi using Euler's solution in 16 digits.
-    pidiff_elr=pi-euler_pi;                        //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
+    pidiff_elr=M_PI-euler_pi;                        //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
     if(pidiff_elr<0){                              //Since the percent error rate is an absolute value, if the difference is negative, then proceed to the next line.
-       percentacc_elr=-1*((pidiff_elr/pi)*100);   //Error rate would be equal to negative one times the pidiff divided by pi times 100.
+       percentacc_elr=-1*((pidiff_elr/M_PI)*100);   //Error rate would be equal to negative one times the pidiff divided by pi times 100.
     }          
     else {                                         //If the difference is zero or positive, then proceed to the next line. 
-       percentacc_elr=((pidiff_elr/pi)*100);      //Error rate would be equal to pidiff divided by pi times 100.
+       percentacc_elr=((pidiff_elr/M_PI)*100);      //Error rate would be equal to pidiff divided by pi times 100.
     }
     printf("\nError rate using Euler's Solution = %1.16lf\n", percentacc_elr); //Print the value of the error rate in 16 digits.
    
@@ -57,12 +57,12 @@ int main(void)
     gregleib_pi=gregleib_pi*4;                                               //The final value of gregleib_pi is equal to gregleib_pi multiplied by 4.
  
     printf("\nApproximated value of pi using Gregory-Leibniz Series = %1.16lf", gregleib_pi);  //Print the value of the approximated calculation of pi using Gregory-Leibniz Series in 16 digits.
-    pidiff_gls=pi-gregleib_pi;                    //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
+    pidiff_gls=M_PI-gregleib_pi;                    //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
     if(pidiff_gls<0){                             //Since the percent error rate is an absolute value, if the difference is negative, then proceed to the next line.
-       percentacc_gls=-1*((pidiff_gls/pi)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
+       percentacc_gls=-1*((pidiff_gls/M_PI)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
     }
     else {                                        //If the difference is zero or positive, then proceed to the next line. 
-       percentacc_gls=((pidiff_gls/pi)*100);     //Error rate would be equal to pidiff divided by pi times 100.
+       percentacc_gls=((pidiff_gls/M_PI)*100);     //Error rate would be equal to pidiff divided by pi times 100.
     }
     printf("\nError rate using Gregory-Leibniz Series = %1.16lf\n", percentacc_gls);  //Print the value of the error rate in 16 digits.
    
@@ -79,12 +79,12 @@ int main(void)
     	}
     }
     printf("\nApproximated value of pi using Nilakantha's Infinite Series = %1.16lf", nilakantha_pi);   //Print the value of the approximated calculation of pi using Nilakantha's Infinite Series in 16 digits.
-    pidiff_nlk=pi-nilakantha_pi;                  //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
+    pidiff_nlk=M_PI-nilakantha_pi;                  //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
     if(pidiff_nlk<0){                             //Since the percent error rate is an absolute value, if the difference is negative, then proceed to the next line.
-       percentacc_nlk=-1*((pidiff_nlk/pi)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
+       percentacc_nlk=-1*((pidiff_nlk/M_PI)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
     }
     else {                                        //If the difference is zero or positive, then proceed to the next line. 
-       percentacc_nlk=((pidiff_nlk/pi)*100);     //Error rate would be equal to pidiff divided by pi times 100.
+       percentacc_nlk=((pidiff_nlk/M_PI)*100);     //Error rate would be equal to pidiff divided by pi times 100.
     }
     printf("\nError rate using Nilakantha's Infinite Series = %1.16lf\n", percentacc_nlk);  //Print the value of the error rate in 16 digits.
    
@@ -100,12 +100,12 @@ int main(void)
     viete_pi*=sqrt(2)/2;                                                //After the outer loop, the viete_pi would be equal to viete_pi times the square root of 2 times 2.
     viete_pi=2/viete_pi;                                                //The final value of viete_pi is equal to 2 divided by the value of viete_pi.
     printf("\nApproximated value of pi using Viete's Formula = %1.16lf", viete_pi);  //Print the value of the approximated calculation of pi using Viete's Formula in 16 digits.
-    pidiff_vte=pi-viete_pi;                       //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
+    pidiff_vte=M_PI-viete_pi;                       //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
     if(pidiff_vte<0){                             //Since the percent error rate is an absolute value, if the difference is negative, then proceed to the next line. 
-       percentacc_vte=-1*((pidiff_vte/pi)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
+       percentacc_vte=-1*((pidiff_vte/M_PI)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
     }
     else {                                        //If the difference is zero or positive, then proceed to the next line. 
-       percentacc_vte=((pidiff_vte/pi)*100);     //Error rate would be equal to pidiff divided by pi times 100.
+       percentacc_vte=((pidiff_vte/M_PI)*100);     //Error rate would be equal to pidiff divided by pi times 100.
     }
     printf("\nError rate using Viete's Formula = %1.16lf\n", percentacc_vte);  //Print the value of the error rate in 16 digits.
     
@@ -120,12 +120,12 @@ int main(void)
      }
      wallis_pi=wallis_pi*2;                                                  //The final product of wallis_pi is equal to wallis_pi multiplied to 2.
      printf("\nApproximated value of pi using Wallis Product = %1.16lf", wallis_pi);  //Print the value of the approximated calculation of pi using Wallis Product in 16 digits.
-     pidiff_wls=pi-wallis_pi;                     //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
+     pidiff_wls=M_PI-wallis_pi;                     //To solve for the percent error rate, we find the actual difference between the actual value of pi in 16 digits and the approximated value of pi.
      if(pidiff_wls<0){                            //Since the percent error rate is an absolute value, if the difference is negative, then proceed to the next line.
-       percentacc_wls=-1*((pidiff_wls/pi)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
+       percentacc_wls=-1*((pidiff_wls/M_PI)*100);  //Error rate would be equal to negative one times the pidiff divided by pi times 100.
      } 
      else {                                       //If the difference is zero or positive, then proceed to the next line. 
-       percentacc_wls=((pidiff_wls/pi)*100);     //Error rate would be equal to pidiff divided by pi times 100.
+       percentacc_wls=((pidiff_wls/M_PI)*100);     //Error rate would be equal to pidiff divided by pi times 100.
      }
      printf("\nError rate using Wallis Product = %1.16lf\n", percentacc_wls);  //Print the value of the error rate in 16 digits.
      }
